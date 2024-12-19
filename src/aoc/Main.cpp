@@ -2,6 +2,7 @@
 
 #include "aoc/days/Day1.hpp"
 #include "aoc/days/Day2.hpp"
+#include "aoc/days/Day3.hpp"
 
 #include <vector>
 #include <memory>
@@ -64,12 +65,12 @@ int main() {
 
 #define DAY(N) std::make_shared<aoc::Day##N>()
     std::vector<std::shared_ptr<aoc::Day>> days = {
-        DAY(1), DAY(2),
+        DAY(1), DAY(2), DAY(3),
     };
 
     size_t dayID = 1;
     for (auto& day : days) {
-        std::cout << "### Day " << dayID << " ###" << std::endl; 
+        std::cout << "### Day " << dayID++ << " ###" << std::endl; 
         day->parse();
         printPart(1, getDurationAndResults([&]() { return day->part1(); }));
         printPart(2, getDurationAndResults([&]() { return day->part2(); }));

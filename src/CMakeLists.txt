@@ -1,6 +1,7 @@
 add_library(aoc-2024src STATIC 
     aoc/days/Day1.cpp
     aoc/days/Day2.cpp
+    aoc/days/Day3.cpp
 
     aoc/input/FileReader.cpp
 )

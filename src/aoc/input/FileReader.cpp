@@ -7,6 +7,33 @@
 
 namespace aoc {
 
+std::string FileReader::rawReadFileToString(const std::string& file, bool stripNewlines) {
+    static std::vector<std::filesystem::path> searchLocations = {
+        "../input", 
+        "./input"
+    };
+    std::filesystem::path p;
+    for (auto& dir : searchLocations) {
+        if (std::filesystem::is_regular_file(dir / file)) {
+            p = dir / file;
+            break;
+        }
+    }
+
+    std::ifstream f(p);
+    std::stringstream out;
+
+    std::string tmp;
+    while (std::getline(f, tmp)) {
+        out << tmp;
+        if (!stripNewlines) {
+            out << "\n";
+        }
+    }
+
+    return out.str();
+}
+
 std::vector<std::string> FileReader::rawReadFile(const std::string& file) {
     static std::vector<std::filesystem::path> searchLocations = {
         "../input", 

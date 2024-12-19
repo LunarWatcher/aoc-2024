@@ -6,6 +6,7 @@
 
 namespace aoc::FileReader {
 
+extern std::string rawReadFileToString(const std::string& file, bool stripNewlines = true);
 extern std::vector<std::string> rawReadFile(const std::string& file);
 
 extern std::pair<std::vector<int>, std::vector<int>> parseFileToVecPair(const std::string& file);
