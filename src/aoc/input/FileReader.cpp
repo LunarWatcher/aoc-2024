@@ -45,8 +45,6 @@ std::pair<std::vector<int>, std::vector<int>> FileReader::parseFileToVecPair(con
         int b1;
         ss >> a1 >> b1;
 
-        std::cout << a1 << "," << b1 << std::endl;
-
         a.push_back(a1);
         b.push_back(b1);
     }

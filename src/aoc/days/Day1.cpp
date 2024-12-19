@@ -31,6 +31,7 @@ std::variant<std::string, int64_t> Day1::part2() {
     int64_t sum = 0;
 
     std::unordered_map<int64_t, int64_t> cache;
+    cache.reserve(listA.size());
     for (auto& num : listB) {
         cache[num] += 1;
     }
