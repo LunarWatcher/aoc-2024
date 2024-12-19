@@ -12,6 +12,7 @@ class Day {
 public:
     using Result = std::variant<std::string, int64_t>;
     using IntMap = std::vector<std::vector<int64_t>>;
+    using CharMap = std::vector<std::vector<char>>;
 
     virtual ~Day() = default;
 

@@ -8,7 +8,7 @@ namespace aoc {
 void Day2::parse() {
     this->map = FileReader::parseFileToVec<std::vector<int64_t>>(
         "day2.txt", 
-        &FileReader::Convert::str2intvec
+        &FileReader::Convert::str2numvec<int64_t>
     );
 }
 

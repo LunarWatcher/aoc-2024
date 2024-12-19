@@ -3,6 +3,7 @@
 #include <functional>
 #include <string>
 #include <vector>
+#include <sstream>
 
 namespace aoc::FileReader {
 
@@ -28,8 +29,17 @@ extern std::vector<T> parseFileToVec(
 
 namespace Convert {
 
-extern std::vector<int64_t> str2intvec(const std::string& line);
+template <typename T>
+extern std::vector<T> str2numvec(const std::string& line) {
+    std::stringstream ss(line);
+    std::vector<T> out;
+    T c;
+    while (ss >> c) {
+        out.push_back(c);
+    }
 
+    return out;
+}
 }
 
 }

@@ -10,7 +10,8 @@ namespace aoc {
 std::string FileReader::rawReadFileToString(const std::string& file, bool stripNewlines) {
     static std::vector<std::filesystem::path> searchLocations = {
         "../input", 
-        "./input"
+        "./input",
+        "../tests/input",
     };
     std::filesystem::path p;
     for (auto& dir : searchLocations) {
@@ -21,6 +22,9 @@ std::string FileReader::rawReadFileToString(const std::string& file, bool stripN
     }
 
     std::ifstream f(p);
+    if (!f) {
+        throw std::runtime_error("Failed to find " + file);
+    }
     std::stringstream out;
 
     std::string tmp;
@@ -37,7 +41,8 @@ std::string FileReader::rawReadFileToString(const std::string& file, bool stripN
 std::vector<std::string> FileReader::rawReadFile(const std::string& file) {
     static std::vector<std::filesystem::path> searchLocations = {
         "../input", 
-        "./input"
+        "./input",
+        "../tests/input",
     };
     std::filesystem::path p;
     for (auto& dir : searchLocations) {
@@ -48,6 +53,9 @@ std::vector<std::string> FileReader::rawReadFile(const std::string& file) {
     }
 
     std::ifstream f(p);
+    if (!f) {
+        throw std::runtime_error("Failed to find " + file);
+    }
     std::vector<std::string> out;
 
     std::string tmp;
@@ -80,17 +88,6 @@ std::pair<std::vector<int>, std::vector<int>> FileReader::parseFileToVecPair(con
 }
 
 namespace FileReader {
-
-std::vector<int64_t> Convert::str2intvec(const std::string& line) {
-    std::stringstream ss(line);
-    std::vector<int64_t> out;
-    int64_t c;
-    while (ss >> c) {
-        out.push_back(c);
-    }
-
-    return out;
-}
 
 }
 

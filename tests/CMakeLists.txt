@@ -1,5 +1,7 @@
 add_executable(tests 
     src/Bench.cpp
+
+    src/Day4.cpp
 )
 
 Include(FetchContent)
