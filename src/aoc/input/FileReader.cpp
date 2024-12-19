@@ -52,4 +52,19 @@ std::pair<std::vector<int>, std::vector<int>> FileReader::parseFileToVecPair(con
     return { a, b };
 }
 
+namespace FileReader {
+
+std::vector<int64_t> Convert::str2intvec(const std::string& line) {
+    std::stringstream ss(line);
+    std::vector<int64_t> out;
+    int64_t c;
+    while (ss >> c) {
+        out.push_back(c);
+    }
+
+    return out;
+}
+
+}
+
 }

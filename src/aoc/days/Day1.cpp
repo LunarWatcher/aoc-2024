@@ -12,7 +12,7 @@ void Day1::parse() {
 
 }
 
-std::variant<std::string, int64_t> Day1::part1() {
+Day::Result Day1::part1() {
     std::vector<int> a = listA;
     std::vector<int> b = listB;
     std::sort(a.begin(), a.end());
@@ -27,7 +27,7 @@ std::variant<std::string, int64_t> Day1::part1() {
     return sum;
 }
 
-std::variant<std::string, int64_t> Day1::part2() {
+Day::Result Day1::part2() {
     int64_t sum = 0;
 
     std::unordered_map<int64_t, int64_t> cache;
