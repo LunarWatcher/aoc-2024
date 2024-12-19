@@ -27,6 +27,28 @@ extern std::vector<T> parseFileToVec(
     return out;
 }
 
+template <typename T>
+extern T parseFileToSpecial(
+    const std::string& file,
+    std::vector<std::function<void(T&, const std::string& line)>> callbacks
+) {
+    auto in = rawReadFile(file);
+    int state = 0;
+
+    T val;
+
+    for (auto& line : in) {
+        if (line == "") {
+            ++state;
+            continue;
+        }
+
+        callbacks.at(state)(val, line);
+    }
+
+    return val;
+}
+
 namespace Convert {
 
 template <typename T>
@@ -40,6 +62,22 @@ extern std::vector<T> str2numvec(const std::string& line) {
 
     return out;
 }
+
+template <typename T>
+extern std::vector<T> comstr2numvec(const std::string& line) {
+    std::stringstream ss(line);
+    std::vector<T> out;
+    char dump;
+    T c;
+
+    do {
+        ss >> c;
+        out.push_back(c);
+    } while (ss >> dump);
+
+    return out;
+}
+
 }
 
 }
